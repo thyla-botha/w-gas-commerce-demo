@@ -1,0 +1,10 @@
+# local tooling / cruft — never commit (contains terminal tokens + browse logs)
+.gstack/
+.DS_Store
+*.log
+*.b64
+
+# OS / editor
+Thumbs.db
+.idea/
+.vscode/
