@@ -62,6 +62,20 @@ git push           # main
 
 ---
 
+## Navigation model
+
+Three destinations, each with its own affordance (no dead-end logos):
+
+| Affordance | Where | Goes to |
+|---|---|---|
+| `weGAS.` wordmark | sidebar + every page topbar | demo **dashboard home** (`#home`) |
+| **Intro** button | sidebar footer | the **launch cover** (re-opens it) |
+| **Back to weGAS** button + cover logo | sidebar footer / cover | main site `w-gas.co.za` |
+
+The cover (`#launch-root`) is a fixed overlay; "Enter the demo" hides it
+(`display:none`), the **Intro** button (`[data-cover]` → `window.__showCover`) brings
+it back.
+
 ## Notes
 
 - **"Back to weGAS" / cover logo** link to `https://w-gas.co.za` (the main marketing

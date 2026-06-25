@@ -132,11 +132,29 @@
     if (window.__goTo) window.__goTo(id);
     setTimeout(() => { root.style.display = 'none'; }, 520);
   }
+
+  /* ---- re-open the cover from inside the demo (sidebar "Intro") ---- */
+  function showCover() {
+    const launch = document.getElementById('launch');
+    if (!launch) return;
+    root.style.display = '';                    // un-hide the overlay container
+    const app = document.querySelector('.app');
+    if (app) app.classList.remove('nav-open');  // close any open mobile drawer
+    void launch.offsetWidth;                    // reflow so the fade-in transition plays
+    launch.classList.remove('hidden');
+  }
+  window.__showCover = showCover;
+
   root.addEventListener('click', e => {
     const en = e.target.closest('[data-enter]');
     if (en) { e.preventDefault(); enter(en.dataset.enter); return; }
     const jp = e.target.closest('[data-jump]');
     if (jp) { e.preventDefault(); enter(jp.dataset.jump); }
+  });
+
+  /* the "Intro" control lives in the sidebar (outside the cover) -> listen on document */
+  document.addEventListener('click', e => {
+    if (e.target.closest('[data-cover]')) { e.preventDefault(); showCover(); }
   });
 
   document.addEventListener('keydown', e => {
